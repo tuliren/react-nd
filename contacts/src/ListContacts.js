@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * Stateless functional component
@@ -28,7 +29,7 @@ import React, { Component } from 'react'
 //   )
 // }
 
-class ListContacts extends Component {
+class ListContacts extends React.Component {
   render() {
     return (
       <ol className='contact-list'>
@@ -47,9 +48,14 @@ class ListContacts extends Component {
           </li>
         ))}
       </ol>
-    )
+    );
   }
 }
+
+ListContacts.propTypes = {
+  contacts: PropTypes.array.isRequired,
+  onDeleteContact: PropTypes.func.isRequired,
+};
 
 // export so that this file can be imported in App.js
 export default ListContacts

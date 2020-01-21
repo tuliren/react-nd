@@ -20,7 +20,8 @@ git clean -fx _book
 git add .
 
 # commit
-git commit -a -m "Update docs"
+COMMIT_MESSAGE="Update gitbook `date '+%Y-%m-%d %H:%M:%S'`"
+git commit -a -m "${COMMIT_MESSAGE}"
 
 # push to the origin
 git push -u origin gh-pages

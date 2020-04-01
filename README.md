@@ -9,8 +9,6 @@ Udacity React Nanodegree Program
 - React Router
 - Project: MyReads
 
-----
-
 # React & Redux
 - Why Redux?
 - Redux Core
@@ -18,8 +16,6 @@ Udacity React Nanodegree Program
 - Redux Store
 - Redux Middleware
 - Project: Readable
-
-----
 
 # React Native
 - Up and Running with React Native

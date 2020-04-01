@@ -15,4 +15,4 @@ jobs:
       - name: Publish
         uses: tuliren/publish-gitbook@v1.0.0
         with:
-          personal_token: ${{ secrets.PERSONAL_TOKEN }}
+          personal_token: ${{ secrets.GITHUB_TOKEN }}

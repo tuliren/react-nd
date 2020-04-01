@@ -1,7 +1,8 @@
-Udacity React Nanodegree Program
-====
+# Udacity React Nanodegree Program
 
-# React Fundamentals
+[![publish](https://github.com/tuliren/react-nd/workflows/publish/badge.svg)](https://tuliren.dev/react-nd/)
+
+## React Fundamentals
 - [Why React?](notes/01-01-why-react.md)
 - [Render UI with React](notes/01-02-render-ui-with-react.md)
 - State Management
@@ -9,7 +10,7 @@ Udacity React Nanodegree Program
 - React Router
 - Project: MyReads
 
-# React & Redux
+## React & Redux
 - Why Redux?
 - Redux Core
 - React & Redux
@@ -17,10 +18,14 @@ Udacity React Nanodegree Program
 - Redux Middleware
 - Project: Readable
 
-# React Native
+## React Native
 - Up and Running with React Native
 - React vs React Native
 - Styling & Layout
 - Navigation
 - Native Features
 - Project: Mobile Flashcards
+
+----
+
+This project is created with [gitbook-template](https://github.com/tuliren/gitbook-template).

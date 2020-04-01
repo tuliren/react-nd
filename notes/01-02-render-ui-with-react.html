@@ -189,10 +189,9 @@
             
 
             
-            <ul class="articles">
-                
+        </li>
     
-        <li class="chapter " data-level="1.2.5.1" >
+        <li class="chapter " data-level="1.2.6" >
             
                 <span>
             
@@ -202,11 +201,6 @@
                 </span>
             
 
-            
-        </li>
-    
-
-            </ul>
             
         </li>
     
@@ -468,7 +462,7 @@
 <ul>
 <li>Creates a single React element of particular type.</li>
 <li><code>type</code><ul>
-<li>string (<code>&lt;div&gt;</code>, <code>&lt;span&gt;</code>)</li>
+<li>string (<code>div</code>, <code>span</code>)</li>
 <li>React component</li>
 </ul>
 </li>
@@ -501,8 +495,11 @@ ReactDOM.render(
 )
 </code></pre>
 <ul>
-<li>Apps built with React have a single <code>root</code> DOM node.</li>
+<li>Apps built with React have a single <code>root</code> DOM node: <code>&lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</code>.</li>
 <li><code>element</code> is inserted into the <code>root</code> DOM node.</li>
+<li>Virtual DOM are objects that describe real DOM nodes.</li>
+<li>When creating React elements, we are describing DOM nodes, not HTML strings.</li>
+<li>Render method creates real DOM nodes in the browser.</li>
 </ul>
 <h4 id="example---dynamic-list"><a name="example---dynamic-list" class="plugin-anchor" href="#example---dynamic-list"><i class="fa fa-link" aria-hidden="true"></i></a>Example - dynamic list</h4>
 <pre><code class="lang-js"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>
@@ -532,7 +529,7 @@ ReactDOM.render(
 </ul>
 <h3 id="jsx"><a name="jsx" class="plugin-anchor" href="#jsx"><i class="fa fa-link" aria-hidden="true"></i></a>JSX</h3>
 <ul>
-<li>A syntax extention to <code>React.createElement</code>.</li>
+<li>A syntax extension to <code>React.createElement</code>.</li>
 <li>JSX is compiled to JavaScript.</li>
 <li>JSX returns a single element as well.</li>
 </ul>
@@ -703,7 +700,7 @@ yarn start
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Render UI with React","level":"1.2.2","depth":2,"next":{"title":"State Management","level":"1.2.3","depth":2,"ref":"","articles":[]},"previous":{"title":"Why React?","level":"1.2.1","depth":2,"path":"notes/01-01-why-react.md","ref":"notes/01-01-why-react.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-sharing","github","anchors","splitter","expandable-chapters"],"pluginsConfig":{"github":{"url":"https://github.com/tuliren/react-nd"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"notes/01-02-render-ui-with-react.md","mtime":"2020-04-01T05:31:38.019Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-01T05:32:21.224Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Render UI with React","level":"1.2.2","depth":2,"next":{"title":"State Management","level":"1.2.3","depth":2,"ref":"","articles":[]},"previous":{"title":"Why React?","level":"1.2.1","depth":2,"path":"notes/01-01-why-react.md","ref":"notes/01-01-why-react.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-sharing","github","anchors","splitter","expandable-chapters"],"pluginsConfig":{"github":{"url":"https://github.com/tuliren/react-nd"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"notes/01-02-render-ui-with-react.md","mtime":"2020-04-01T06:02:37.705Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-01T06:03:22.555Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

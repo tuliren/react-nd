@@ -60,7 +60,7 @@
 - React's data-flow
   - Data lives in the parent component.
   - Data is accessible by both the parent and child components.
-  - Only the parent component can change the data.
+  - Only the parent component can change the data, because the component that stores the data should be the one that updates it.
   - If child component needs to make a change to the data, it would send the updated data to the parent component where the change will actually be made.
 
     ![](images/data-flow.png)

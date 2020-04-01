@@ -4,7 +4,7 @@
   - State Management
   - Render UI with External Data
   - React Router
-   - Project: MyReads
+  - Project: MyReads
 
 - React & Redux
   - Why Redux?

@@ -15,7 +15,7 @@ React.createElement(type, props, content);
 
 - Creates a single React element of particular type.
 - `type`
-  - string (`<div>`, `<span>`)
+  - string (`div`, `span`)
   - React component
 - `props`
   - `null`
@@ -44,8 +44,11 @@ ReactDOM.render(
 )
 ```
 
-- Apps built with React have a single `root` DOM node.
+- Apps built with React have a single `root` DOM node: `<div id="root"></div>`.
 - `element` is inserted into the `root` DOM node.
+- Virtual DOM are objects that describe real DOM nodes.
+- When creating React elements, we are describing DOM nodes, not HTML strings.
+- Render method creates real DOM nodes in the browser.
 
 #### Example - dynamic list
 
@@ -76,7 +79,7 @@ ReactDOM.render(
 - A unique `key` prop is needed when defining a list. `key` helps React track specific child elements as the state changes in the app.
 
 ### JSX
-- A syntax extention to `React.createElement`.
+- A syntax extension to `React.createElement`.
 - JSX is compiled to JavaScript.
 - JSX returns a single element as well.
 

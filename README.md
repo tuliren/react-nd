@@ -28,4 +28,4 @@
 
 ----
 
-This project is created with [gitbook-template](https://github.com/tuliren/gitbook-template).
+This project is created with [gitbook-template](https://github.com/tuliren/gitbook-template) and published by [publish-gitbook](https://github.com/tuliren/publish-gitbook).

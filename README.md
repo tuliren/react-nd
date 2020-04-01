@@ -25,3 +25,7 @@
 - Navigation
 - Native Features
 - Project: Mobile Flashcards
+
+----
+
+This project is created with [gitbook-template](https://github.com/tuliren/gitbook-template).

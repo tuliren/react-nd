@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import escapeRegExp from 'escape-string-regexp';
 import sortBy from 'sort-by';
@@ -7,7 +7,7 @@ import sortBy from 'sort-by';
 /**
  * Stateless functional component
  *
- * When the component only has one render method and does not track interal state,
+ * When the component only has one render method and does not track internal state,
  * it can be replaced with a stateless functional component which has props as its argument.
  */
 
@@ -35,19 +35,19 @@ import sortBy from 'sort-by';
 class ListContacts extends React.Component {
   static propTypes = {
     contacts: PropTypes.array.isRequired,
-    onDeleteContact: PropTypes.func.isRequired
+    onDeleteContact: PropTypes.func.isRequired,
   };
 
   state = {
-    query: ''
+    query: '',
   };
 
   updateQuery = (query) => {
-    this.setState({ query: query.trim() })
+    this.setState({ query: query.trim() });
   };
 
   clearQuery = () => {
-    this.setState({ query: '' })
+    this.setState({ query: '' });
   };
 
   render() {
@@ -57,9 +57,9 @@ class ListContacts extends React.Component {
     let showingContacts;
     if (query) {
       const match = new RegExp(escapeRegExp(query), 'i');
-      showingContacts = contacts.filter((contact) => match.test(contact.name))
+      showingContacts = contacts.filter((contact) => match.test(contact.name));
     } else {
-      showingContacts = contacts
+      showingContacts = contacts;
     }
 
     showingContacts.sort(sortBy('name'));
@@ -92,7 +92,7 @@ class ListContacts extends React.Component {
           {showingContacts.map((contact) => (
             <li key={contact.id} className='contact-list-item'>
               <div className='contact-avatar' style={{
-                backgroundImage: `url(${contact.avatarURL})`
+                backgroundImage: `url(${contact.avatarURL})`,
               }}/>
               <div className='contact-details'>
                 <p>{contact.name}</p>
@@ -110,4 +110,4 @@ class ListContacts extends React.Component {
 }
 
 // export so that this file can be imported in App.js
-export default ListContacts
+export default ListContacts;

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Why React? · GitBook</title>
+        <title>Lifecycle Events · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -69,8 +69,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="01-02-render-ui-with-react.html" />
+    <link rel="next" href="01-05-react-router.html" />
     
+    
+    <link rel="prev" href="01-03-state-management.html" />
     
 
     </head>
@@ -126,7 +128,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.2.1" data-path="01-01-why-react.html">
+        <li class="chapter " data-level="1.2.1" data-path="01-01-why-react.html">
             
                 <a href="01-01-why-react.html">
             
@@ -165,7 +167,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4" data-path="01-04-lifecycle-events.html">
+        <li class="chapter active" data-level="1.2.4" data-path="01-04-lifecycle-events.html">
             
                 <a href="01-04-lifecycle-events.html">
             
@@ -433,7 +435,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Why React?</a>
+        <a href=".." >Lifecycle Events</a>
     </h1>
 </div>
 
@@ -448,96 +450,105 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="why-react"><a name="why-react" class="plugin-anchor" href="#why-react"><i class="fa fa-link" aria-hidden="true"></i></a>Why React</h1>
-<h2 id="intro"><a name="intro" class="plugin-anchor" href="#intro"><i class="fa fa-link" aria-hidden="true"></i></a>Intro</h2>
+                                <h1 id="lifecycle-events"><a name="lifecycle-events" class="plugin-anchor" href="#lifecycle-events"><i class="fa fa-link" aria-hidden="true"></i></a>Lifecycle Events</h1>
+<h2 id="render-is-for-rendering-only"><a name="render-is-for-rendering-only" class="plugin-anchor" href="#render-is-for-rendering-only"><i class="fa fa-link" aria-hidden="true"></i></a><code>render</code> is for rendering only</h2>
 <ul>
-<li>What makes React special?<ul>
-<li>Compositional model</li>
-<li>Declarative nature</li>
-<li>The way data flows from parent to child</li>
-<li>React is just JavaScript</li>
+<li><code>render</code> is only used for displaying content</li>
+<li>Data should not be fetched in the <code>render</code> method</li>
 </ul>
-</li>
-</ul>
-<h2 id="composition"><a name="composition" class="plugin-anchor" href="#composition"><i class="fa fa-link" aria-hidden="true"></i></a>Composition</h2>
+<h2 id="lifecycle-events"><a name="lifecycle-events" class="plugin-anchor" href="#lifecycle-events"><i class="fa fa-link" aria-hidden="true"></i></a>Lifecycle events</h2>
 <ul>
-<li>React code composes functions to get UI.</li>
-<li>Composition<ul>
-<li>Combine simple functions to build complicated ones.</li>
-<li>Good function follows DOT rule (Do One Thing).</li>
+<li>Lifecycle events are specially names methods in a component</li>
+<li>These methods are automatically bound to the component instance</li>
+<li>React will call these methods naturally at certain times during the life of a component</li>
 </ul>
-</li>
-<li><p>React component</p>
-<pre><code class="lang-html">// simple components
-<span class="hljs-tag">&lt;<span class="hljs-name">Page</span> /&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">Article</span> /&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">Sidebar</span> /&gt;</span>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>componentDidMount</code></td>
+<td>Invoked immediateky <em>after</em> the component is <em>inserted</em> into the DOM</td>
+</tr>
+<tr>
+<td><code>componentWillUnmount</code></td>
+<td>Invoked immediately <em>before</em> a component is <em>removed</em> from the DOM</td>
+</tr>
+<tr>
+<td><code>getDerivedStateFromProps</code></td>
+<td>Invoked after a component is instantiated as well as when it receives brand new props</td>
+</tr>
+</tbody>
+</table>
+<h3 id="componentdidmount"><a name="componentdidmount" class="plugin-anchor" href="#componentdidmount"><i class="fa fa-link" aria-hidden="true"></i></a><code>componentDidMount</code></h3>
+<ul>
+<li>It is invoked immediately after a component is mounted. Initialization that requires DOM nodes should go here.</li>
+<li>If data needs to be loaded from a remote endpoint, this is a good place to instantiate the network request.</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+  <span class="hljs-keyword">constructor</span>(props) {
+    <span class="hljs-keyword">super</span>(props);
+    <span class="hljs-keyword">this</span>.state = {
+      name: <span class="hljs-string">&apos;&apos;</span>,
+      age: <span class="hljs-string">&apos;&apos;</span>,
+    };
+  }
 
-// component composition
-<span class="hljs-tag">&lt;<span class="hljs-name">Page</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">Article</span> /&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">Sidebar</span> /&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">Page</span>&gt;</span>
-</code></pre>
-</li>
-</ul>
-<h2 id="declarative-code"><a name="declarative-code" class="plugin-anchor" href="#declarative-code"><i class="fa fa-link" aria-hidden="true"></i></a>Declarative Code</h2>
-<ul>
-<li><p>Imperative code</p>
-<ul>
-<li>Imperative: expressing a command; commanding.</li>
-<li><p>Exactly <strong><em>what to do</em></strong> and <strong><em>how to do</em></strong> it.</p>
-<pre><code class="lang-js"><span class="hljs-keyword">const</span> people = [<span class="hljs-string">&apos;Amanda&apos;</span>, <span class="hljs-string">&apos;Geoff&apos;</span>, <span class="hljs-string">&apos;Michael&apos;</span>, <span class="hljs-string">&apos;Richard&apos;</span>, <span class="hljs-string">&apos;Ryan&apos;</span>, <span class="hljs-string">&apos;Tyler&apos;</span>]
-<span class="hljs-keyword">const</span> excitedPeople = []
+  componentDidMount() {
+    fetchUser().then((user) =&gt; <span class="hljs-keyword">this</span>.setState({
+      name: user.name,
+      age: user.age,
+    }));
+  }
 
-<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; people.length; i++) {
-  excitedPeople[i] = people[i] + <span class="hljs-string">&apos;!&apos;</span>
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Name: {this.state.name}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Age: {this.state.age}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+    );
+  }
 }
 </code></pre>
-</li>
-</ul>
-</li>
-<li><p>Declarative code</p>
 <ul>
-<li><p>Declare <strong><em>what to be done</em></strong>.</p>
-<pre><code class="lang-js"><span class="hljs-keyword">const</span> excitedPeople = people.map(name =&gt; name + <span class="hljs-string">&apos;!&apos;</span>)
-</code></pre>
-</li>
+<li>The <code>render</code> method is called which updates the page with a <code>&lt;div&gt;</code>. <code>this.state.name</code> and <code>this.state.age</code> are empty strings (at first), so the name and age don&apos;t actually display.</li>
+<li>Once the component has been mounted, <code>componentDidMount</code> lifecycle event occurs:<ul>
+<li><code>fetchUser</code> request from the <code>UserAPI</code> is run which sends a request to the user database;</li>
+<li>When the data is returned, <code>setState</code> updates the <code>name</code> and <code>age</code> properties.</li>
 </ul>
 </li>
+<li>Since the state has changed, <code>render</code> gets called again. This re-renders the page, but now <code>this.state.name</code> and <code>this.state.age</code> have values.</li>
 </ul>
-<h2 id="unidirectional-data-flow"><a name="unidirectional-data-flow" class="plugin-anchor" href="#unidirectional-data-flow"><i class="fa fa-link" aria-hidden="true"></i></a>Unidirectional Data Flow</h2>
+<h3 id="componentwillmount"><a name="componentwillmount" class="plugin-anchor" href="#componentwillmount"><i class="fa fa-link" aria-hidden="true"></i></a><code>componentWillMount</code></h3>
 <ul>
-<li><a href="https://angular.io/guide/template-syntax#binding-syntax-an-overview" target="_blank">Angular</a><ul>
-<li>From source to view</li>
-<li>From view to source</li>
-<li>Two-way</li>
+<li>Do not use this event to fetch data.</li>
+<li>This event has been deprecated.</li>
+<li>More critically, React does not <code>await</code> for <code>componentWillMount</code>, and <code>async</code> function calls put in this event to fetch data will not return. So data won&apos;t be available in <code>render</code> method.</li>
 </ul>
-</li>
-<li><p><a href="https://guides.emberjs.com/v2.13.0/object-model/bindings/" target="_blank">Ember</a></p>
+<h2 id="lifecycle-event-sequence"><a name="lifecycle-event-sequence" class="plugin-anchor" href="#lifecycle-event-sequence"><i class="fa fa-link" aria-hidden="true"></i></a>Lifecycle event sequence</h2>
+<h3 id="add-component-to-the-dom"><a name="add-component-to-the-dom" class="plugin-anchor" href="#add-component-to-the-dom"><i class="fa fa-link" aria-hidden="true"></i></a>Add component to the DOM</h3>
 <ul>
-<li>Two-way: <code>Ember.computed.alias()</code></li>
-<li>One-way: <code>Ember.computed.oneWay()</code></li>
+<li><code>constructor</code></li>
+<li><code>getDerivedStateFromProps</code></li>
+<li><code>render</code></li>
+<li><code>componentDidMount</code></li>
 </ul>
-</li>
-<li><p>React&apos;s data-flow</p>
+<h3 id="re-render-component-to-the-dom"><a name="re-render-component-to-the-dom" class="plugin-anchor" href="#re-render-component-to-the-dom"><i class="fa fa-link" aria-hidden="true"></i></a>Re-render component to the DOM</h3>
 <ul>
-<li>Data lives in the parent component.</li>
-<li>Data is accessible by both the parent and child components.</li>
-<li>Only the parent component can change the data, because the component that stores the data should be the one that updates it.</li>
-<li><p>If child component needs to make a change to the data, it would send the updated data to the parent component where the change will actually be made.</p>
-<p><img src="images/data-flow.png" alt=""></p>
-</li>
+<li><code>getDerivedStateFromProps</code></li>
+<li><code>shouldComponentUpdate</code></li>
+<li><code>render</code></li>
+<li><code>getSnapshotBeforeUpdate</code></li>
+<li><code>componentDidUpdate</code></li>
 </ul>
-</li>
-</ul>
-<h2 id="just-javascript"><a name="just-javascript" class="plugin-anchor" href="#just-javascript"><i class="fa fa-link" aria-hidden="true"></i></a>Just JavaScript</h2>
+<h3 id="remove-component-from-the-dom-"><a name="remove-component-from-the-dom-" class="plugin-anchor" href="#remove-component-from-the-dom-"><i class="fa fa-link" aria-hidden="true"></i></a>Remove component from the DOM |</h3>
 <ul>
-<li>JS functional programming<ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank"><code>Array.map()</code></a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank"><code>Array.filter()</code></a></li>
-</ul>
-</li>
+<li><code>componentWillUnmount</code></li>
 </ul>
 
                                 
@@ -566,8 +577,12 @@
 
             
                 
+                <a href="01-03-state-management.html" class="navigation navigation-prev " aria-label="Previous page: State Management">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="01-02-render-ui-with-react.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Render UI with React">
+                
+                <a href="01-05-react-router.html" class="navigation navigation-next " aria-label="Next page: React Router">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -578,7 +593,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Why React?","level":"1.2.1","depth":2,"next":{"title":"Render UI with React","level":"1.2.2","depth":2,"path":"notes/01-02-render-ui-with-react.md","ref":"notes/01-02-render-ui-with-react.md","articles":[]},"previous":{"title":"React Fundamentals","level":"1.2","depth":1,"ref":"","articles":[{"title":"Why React?","level":"1.2.1","depth":2,"path":"notes/01-01-why-react.md","ref":"notes/01-01-why-react.md","articles":[]},{"title":"Render UI with React","level":"1.2.2","depth":2,"path":"notes/01-02-render-ui-with-react.md","ref":"notes/01-02-render-ui-with-react.md","articles":[]},{"title":"State Management","level":"1.2.3","depth":2,"path":"notes/01-03-state-management.md","ref":"notes/01-03-state-management.md","articles":[]},{"title":"Lifecycle Events","level":"1.2.4","depth":2,"path":"notes/01-04-lifecycle-events.md","ref":"notes/01-04-lifecycle-events.md","articles":[]},{"title":"React Router","level":"1.2.5","depth":2,"path":"notes/01-05-react-router.md","ref":"notes/01-05-react-router.md","articles":[]},{"title":"Project: MyReads","level":"1.2.6","depth":2,"ref":"","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-sharing","github","anchors","splitter","expandable-chapters"],"pluginsConfig":{"github":{"url":"https://github.com/tuliren/react-nd"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"notes/01-01-why-react.md","mtime":"2020-04-06T08:07:53.919Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-06T08:08:36.494Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Lifecycle Events","level":"1.2.4","depth":2,"next":{"title":"React Router","level":"1.2.5","depth":2,"path":"notes/01-05-react-router.md","ref":"notes/01-05-react-router.md","articles":[]},"previous":{"title":"State Management","level":"1.2.3","depth":2,"path":"notes/01-03-state-management.md","ref":"notes/01-03-state-management.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-sharing","github","anchors","splitter","expandable-chapters"],"pluginsConfig":{"github":{"url":"https://github.com/tuliren/react-nd"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"notes/01-04-lifecycle-events.md","mtime":"2020-04-06T08:07:53.923Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-06T08:08:36.494Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

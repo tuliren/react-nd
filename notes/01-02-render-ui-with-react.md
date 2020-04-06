@@ -109,7 +109,7 @@ ReactDOM.render(
 )
 ```
 
-### React component
+### [React component](https://reactjs.org/docs/components-and-props.html)
 - Reusable pieces of code that groups React elements together.
 - Factory to create React elements.
 - Component should have
@@ -151,7 +151,9 @@ ReactDOM.render(
 ```
 
 ## Create React App
+- `yarn` is a package manager that replaces `npm`.
 - `Webpack` bundles all assets (JavaScript files, CSS, images, etc).
+- `Webpack dev server` provides auto-reload behavior.
 - `Babel` transpiles JSX to JavaScript.
 - `create-react-app` manages all the above setup.
 
@@ -173,6 +175,7 @@ yarn start
 
 ## Composing with Components
 - Component composition
+  - Encourage composition over inheritance
   - Reuse components
   - Allow different configuration of components
 

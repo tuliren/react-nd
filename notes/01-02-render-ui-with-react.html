@@ -69,6 +69,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="01-03-state-management.html" />
+    
     
     <link rel="prev" href="01-01-why-react.html" />
     
@@ -152,40 +154,40 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" >
+        <li class="chapter " data-level="1.2.3" data-path="01-03-state-management.html">
             
-                <span>
+                <a href="01-03-state-management.html">
             
                     
                     State Management
             
-                </span>
+                </a>
             
 
             
         </li>
     
-        <li class="chapter " data-level="1.2.4" >
+        <li class="chapter " data-level="1.2.4" data-path="01-04-lifecycle-events.html">
             
-                <span>
+                <a href="01-04-lifecycle-events.html">
             
                     
-                    Render UI with External Data
+                    Lifecycle Events
             
-                </span>
+                </a>
             
 
             
         </li>
     
-        <li class="chapter " data-level="1.2.5" >
+        <li class="chapter " data-level="1.2.5" data-path="01-05-react-router.html">
             
-                <span>
+                <a href="01-05-react-router.html">
             
                     
                     React Router
             
-                </span>
+                </a>
             
 
             
@@ -556,7 +558,7 @@ ReactDOM.render(
   <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&apos;root&apos;</span>)
 )
 </code></pre>
-<h3 id="react-component"><a name="react-component" class="plugin-anchor" href="#react-component"><i class="fa fa-link" aria-hidden="true"></i></a>React component</h3>
+<h3 id="react-component"><a name="react-component" class="plugin-anchor" href="#react-component"><i class="fa fa-link" aria-hidden="true"></i></a><a href="https://reactjs.org/docs/components-and-props.html" target="_blank">React component</a></h3>
 <ul>
 <li>Reusable pieces of code that groups React elements together.</li>
 <li>Factory to create React elements.</li>
@@ -600,7 +602,9 @@ ReactDOM.render(
 </code></pre>
 <h2 id="create-react-app"><a name="create-react-app" class="plugin-anchor" href="#create-react-app"><i class="fa fa-link" aria-hidden="true"></i></a>Create React App</h2>
 <ul>
+<li><code>yarn</code> is a package manager that replaces <code>npm</code>.</li>
 <li><code>Webpack</code> bundles all assets (JavaScript files, CSS, images, etc).</li>
+<li><code>Webpack dev server</code> provides auto-reload behavior.</li>
 <li><code>Babel</code> transpiles JSX to JavaScript.</li>
 <li><code>create-react-app</code> manages all the above setup.</li>
 </ul>
@@ -622,6 +626,7 @@ yarn start
 <h2 id="composing-with-components"><a name="composing-with-components" class="plugin-anchor" href="#composing-with-components"><i class="fa fa-link" aria-hidden="true"></i></a>Composing with Components</h2>
 <ul>
 <li>Component composition<ul>
+<li>Encourage composition over inheritance</li>
 <li>Reuse components</li>
 <li>Allow different configuration of components</li>
 </ul>
@@ -688,10 +693,14 @@ yarn start
 
             
                 
-                <a href="01-01-why-react.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Why React?">
+                <a href="01-01-why-react.html" class="navigation navigation-prev " aria-label="Previous page: Why React?">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="01-03-state-management.html" class="navigation navigation-next " aria-label="Next page: State Management">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -700,7 +709,7 @@ yarn start
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Render UI with React","level":"1.2.2","depth":2,"next":{"title":"State Management","level":"1.2.3","depth":2,"ref":"","articles":[]},"previous":{"title":"Why React?","level":"1.2.1","depth":2,"path":"notes/01-01-why-react.md","ref":"notes/01-01-why-react.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-sharing","github","anchors","splitter","expandable-chapters"],"pluginsConfig":{"github":{"url":"https://github.com/tuliren/react-nd"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"notes/01-02-render-ui-with-react.md","mtime":"2020-04-01T06:02:37.705Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-01T06:03:22.555Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Render UI with React","level":"1.2.2","depth":2,"next":{"title":"State Management","level":"1.2.3","depth":2,"path":"notes/01-03-state-management.md","ref":"notes/01-03-state-management.md","articles":[]},"previous":{"title":"Why React?","level":"1.2.1","depth":2,"path":"notes/01-01-why-react.md","ref":"notes/01-01-why-react.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-sharing","github","anchors","splitter","expandable-chapters"],"pluginsConfig":{"github":{"url":"https://github.com/tuliren/react-nd"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"notes/01-02-render-ui-with-react.md","mtime":"2020-04-06T08:07:53.919Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-06T08:08:36.494Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

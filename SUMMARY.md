@@ -3,7 +3,7 @@
   - [Render UI with React](notes/01-02-render-ui-with-react.md)
   - [State Management](notes/01-03-state-management.md)
   - [Lifecycle Events](notes/01-04-lifecycle-events.md)
-  - React Router
+  - [React Router](notes/01-05-react-router.md)
   - Project: MyReads
 
 - React & Redux

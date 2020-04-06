@@ -43,10 +43,12 @@ app.use((req, res, next) => {
 });
 
 app.get('/contacts', (req, res) => {
+  console.log(`Get all contacts`);
   res.send(contacts.get(req.token));
 });
 
 app.delete('/contacts/:id', (req, res) => {
+  console.log(`Remove contact: ${req.params.id}`);
   res.send(contacts.remove(req.token, req.params.id));
 });
 
@@ -54,6 +56,7 @@ app.post('/contacts', bodyParser.json(), (req, res) => {
   const { name, handle } = req.body;
 
   if (name && handle) {
+    console.log(`Create new contact: ${name}, ${handle}`);
     res.send(contacts.add(req.token, req.body));
   } else {
     res.status(403).send({

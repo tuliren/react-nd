@@ -21,7 +21,7 @@ import sortBy from 'sort-by';
 //           }}/>
 //           <div className='contact-details'>
 //             <p>{contact.name}</p>
-//             <p>{contact.email}</p>
+//             <p>{contact.handle}</p>
 //           </div>
 //           <button className='contact-remove'>
 //             Remove
@@ -96,7 +96,7 @@ class ListContacts extends Component {
               }}/>
               <div className='contact-details'>
                 <p>{contact.name}</p>
-                <p>{contact.email}</p>
+                <p>{contact.handle}</p>
               </div>
               <button onClick={() => onDeleteContact(contact)} className='contact-remove'>
                 Remove

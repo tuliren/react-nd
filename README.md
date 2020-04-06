@@ -11,8 +11,8 @@
 | 01 | [Why React?](notes/01-01-why-react.md) | 2020-03-31 |
 | 02 | [Render UI with React](notes/01-02-render-ui-with-react.md) | 2020-04-04 |
 | 03 | [State Management](notes/01-03-state-management.md) | 2020-04-05 |
-| 04 | [Lifecycle Events](notes/01-04-lifecycle-events.md) | |
-| 05 | React Router | |
+| 04 | [Lifecycle Events](notes/01-04-lifecycle-events.md) | 2020-04-05 |
+| 05 | [React Router](notes/01-05-react-router.md) | 2020-04-05 |
 | 06 | Project: MyReads | |
 
 ## React & Redux

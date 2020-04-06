@@ -512,30 +512,25 @@ ReactDOM.render(
 <h2 id="link-component"><a name="link-component" class="plugin-anchor" href="#link-component"><i class="fa fa-link" aria-hidden="true"></i></a><code>Link</code> component</h2>
 <ul>
 <li>When user clicks a <code>Link</code>, it tasks to the <code>BrowserRouter</code> about the URL update</li>
-<li><p>Replace <code>a</code> element with <code>Link</code> component:</p>
-<pre><code class="lang-jsx">// simple link
-&lt;Link to=&apos;/create&apos;&gt;Add Contact&lt;/Link&gt;
-
-// complicated link
-
-&lt;Link to={{
-
-  pathname: &apos;/courses&apos;,
-  search: &apos;?sort=name&apos;,
-  hash: &apos;#the-hash&apos;,
-  state: { fromDashboard: true }
-
-}}&gt;
-
-  Course
-&lt;/Link&gt;
-</code></pre>
-</li>
+<li>Replace <code>a</code> element with <code>Link</code> component:</li>
 </ul>
+<pre><code class="lang-js">  // simple link
+  &lt;Link to=&apos;/create&apos;&gt;Add Contact&lt;/Link&gt;
+
+  // complicated link
+  &lt;Link to={{
+    pathname: &apos;/courses&apos;,
+    search: &apos;?sort=name&apos;,
+    hash: &apos;#the-hash&apos;,
+    state: { fromDashboard: true }
+  }}&gt;
+    Course
+  &lt;/Link&gt;
+</code></pre>
 <h2 id="route-component"><a name="route-component" class="plugin-anchor" href="#route-component"><i class="fa fa-link" aria-hidden="true"></i></a><code>Route</code> component</h2>
 <ul>
 <li><p><code>Route</code> component decides which components to render based on the current URL path.</p>
-<pre><code class="lang-jsx"><span class="hljs-comment">// render function</span>
+<pre><code class="lang-js"><span class="hljs-comment">// render function</span>
 &lt;Route exact path=<span class="hljs-string">&apos;/&apos;</span> render={() =&gt; (
   &lt;content-to-render-under-this-path&gt;
 )} /&gt;
@@ -604,7 +599,7 @@ ReactDOM.render(
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"React Router","level":"1.2.5","depth":2,"next":{"title":"Project: MyReads","level":"1.2.6","depth":2,"ref":"","articles":[]},"previous":{"title":"Lifecycle Events","level":"1.2.4","depth":2,"path":"notes/01-04-lifecycle-events.md","ref":"notes/01-04-lifecycle-events.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-sharing","github","anchors","splitter","expandable-chapters"],"pluginsConfig":{"github":{"url":"https://github.com/tuliren/react-nd"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"notes/01-05-react-router.md","mtime":"2020-04-06T08:34:06.441Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-06T08:34:52.996Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"React Router","level":"1.2.5","depth":2,"next":{"title":"Project: MyReads","level":"1.2.6","depth":2,"ref":"","articles":[]},"previous":{"title":"Lifecycle Events","level":"1.2.4","depth":2,"path":"notes/01-04-lifecycle-events.md","ref":"notes/01-04-lifecycle-events.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-sharing","github","anchors","splitter","expandable-chapters"],"pluginsConfig":{"github":{"url":"https://github.com/tuliren/react-nd"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"notes/01-05-react-router.md","mtime":"2020-04-06T08:37:56.630Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-06T08:38:39.683Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

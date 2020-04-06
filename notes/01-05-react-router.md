@@ -63,29 +63,27 @@ yarn add react-router-dom
 - When user clicks a `Link`, it tasks to the `BrowserRouter` about the URL update
 - Replace `a` element with `Link` component:
 
-  ```jsx
+  {% raw %}
+  ```js
   // simple link
   <Link to='/create'>Add Contact</Link>
 
   // complicated link
-  {% raw %}
   <Link to={{
-  {% endraw %}
     pathname: '/courses',
     search: '?sort=name',
     hash: '#the-hash',
     state: { fromDashboard: true }
-  {% raw %}
   }}>
-  {% endraw %}
     Course
   </Link>
   ```
+  {% endraw %}
 
 ## `Route` component
 - `Route` component decides which components to render based on the current URL path.
 
-  ```jsx
+  ```js
   // render function
   <Route exact path='/' render={() => (
     <content-to-render-under-this-path>

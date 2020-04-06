@@ -1,8 +1,8 @@
 - React Fundamentals
   - [Why React?](notes/01-01-why-react.md)
   - [Render UI with React](notes/01-02-render-ui-with-react.md)
-  - State Management
-  - Render UI with External Data
+  - [State Management](notes/01-03-state-management.md)
+  - [Lifecycle Events](notes/01-04-lifecycle-events.md)
   - React Router
   - Project: MyReads
 

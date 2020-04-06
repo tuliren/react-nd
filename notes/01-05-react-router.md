@@ -63,12 +63,12 @@ yarn add react-router-dom
 - When user clicks a `Link`, it tasks to the `BrowserRouter` about the URL update
 - Replace `a` element with `Link` component:
 
-  ```jsx
+  ```js
   // simple link
   <Link to='/create'>Add Contact</Link>
 
   // complicated link
-  <Link to={{
+  <Link to=\{{
     pathname: '/courses',
     search: '?sort=name',
     hash: '#the-hash',

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Lifecycle Events · GitBook</title>
+        <title>React Router · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -69,10 +69,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="01-05-react-router.html" />
     
-    
-    <link rel="prev" href="01-03-state-management.html" />
+    <link rel="prev" href="01-04-lifecycle-events.html" />
     
 
     </head>
@@ -167,7 +165,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.4" data-path="01-04-lifecycle-events.html">
+        <li class="chapter " data-level="1.2.4" data-path="01-04-lifecycle-events.html">
             
                 <a href="01-04-lifecycle-events.html">
             
@@ -180,7 +178,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.5" data-path="01-05-react-router.html">
+        <li class="chapter active" data-level="1.2.5" data-path="01-05-react-router.html">
             
                 <a href="01-05-react-router.html">
             
@@ -435,7 +433,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Lifecycle Events</a>
+        <a href=".." >React Router</a>
     </h1>
 </div>
 
@@ -450,105 +448,117 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="lifecycle-events"><a name="lifecycle-events" class="plugin-anchor" href="#lifecycle-events"><i class="fa fa-link" aria-hidden="true"></i></a>Lifecycle Events</h1>
-<h2 id="render-is-for-rendering-only"><a name="render-is-for-rendering-only" class="plugin-anchor" href="#render-is-for-rendering-only"><i class="fa fa-link" aria-hidden="true"></i></a><code>render</code> is for rendering only</h2>
+                                <h1 id="react-router"><a name="react-router" class="plugin-anchor" href="#react-router"><i class="fa fa-link" aria-hidden="true"></i></a>React Router</h1>
+<h2 id="single-page-apps"><a name="single-page-apps" class="plugin-anchor" href="#single-page-apps"><i class="fa fa-link" aria-hidden="true"></i></a>Single-page apps</h2>
 <ul>
-<li><code>render</code> is only used for displaying content</li>
-<li>Data should not be fetched in the <code>render</code> method</li>
-</ul>
-<h2 id="lifecycle-events"><a name="lifecycle-events" class="plugin-anchor" href="#lifecycle-events"><i class="fa fa-link" aria-hidden="true"></i></a>Lifecycle events</h2>
-<ul>
-<li>Lifecycle events are specially names methods in a component</li>
-<li>These methods are automatically bound to the component instance</li>
-<li>React will call these methods naturally at certain times during the life of a component</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th>Function</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>componentDidMount</code></td>
-<td>Invoked immediateky <em>after</em> the component is <em>inserted</em> into the DOM</td>
-</tr>
-<tr>
-<td><code>componentWillUnmount</code></td>
-<td>Invoked immediately <em>before</em> a component is <em>removed</em> from the DOM</td>
-</tr>
-<tr>
-<td><code>getDerivedStateFromProps</code></td>
-<td>Invoked after a component is instantiated as well as when it receives brand new props</td>
-</tr>
-</tbody>
-</table>
-<h3 id="componentdidmount"><a name="componentdidmount" class="plugin-anchor" href="#componentdidmount"><i class="fa fa-link" aria-hidden="true"></i></a><code>componentDidMount</code></h3>
-<ul>
-<li>It is invoked immediately after a component is mounted. Initialization that requires DOM nodes should go here.</li>
-<li>If data needs to be loaded from a remote endpoint, this is a good place to instantiate the network request.</li>
-</ul>
-<pre><code class="lang-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
-  <span class="hljs-keyword">constructor</span>(props) {
-    <span class="hljs-keyword">super</span>(props);
-    <span class="hljs-keyword">this</span>.state = {
-      name: <span class="hljs-string">&apos;&apos;</span>,
-      age: <span class="hljs-string">&apos;&apos;</span>,
-    };
-  }
-
-  componentDidMount() {
-    fetchUser().then((user) =&gt; <span class="hljs-keyword">this</span>.setState({
-      name: user.name,
-      age: user.age,
-    }));
-  }
-
-  render() {
-    <span class="hljs-keyword">return</span> (
-      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Name: {this.state.name}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Age: {this.state.age}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
-    );
-  }
-}
-</code></pre>
-<ul>
-<li>The <code>render</code> method is called which updates the page with a <code>&lt;div&gt;</code>. <code>this.state.name</code> and <code>this.state.age</code> are empty strings (at first), so the name and age don&apos;t actually display.</li>
-<li>Once the component has been mounted, <code>componentDidMount</code> lifecycle event occurs:<ul>
-<li><code>fetchUser</code> request from the <code>UserAPI</code> is run which sends a request to the user database;</li>
-<li>When the data is returned, <code>setState</code> updates the <code>name</code> and <code>age</code> properties.</li>
+<li>Difference approaches<ul>
+<li>Download the entire site&apos;s contents all at once.</li>
+<li>Download everything that&apos;s needed to render the page the user requested. When the user navigates to a new page, asynchronous JavaScript requests are made for just the requested content.</li>
 </ul>
 </li>
-<li>Since the state has changed, <code>render</code> gets called again. This re-renders the page, but now <code>this.state.name</code> and <code>this.state.age</code> have values.</li>
+<li>URL controls the page content for bookmarkability.</li>
 </ul>
-<h3 id="componentwillmount"><a name="componentwillmount" class="plugin-anchor" href="#componentwillmount"><i class="fa fa-link" aria-hidden="true"></i></a><code>componentWillMount</code></h3>
+<h2 id="react-router"><a name="react-router" class="plugin-anchor" href="#react-router"><i class="fa fa-link" aria-hidden="true"></i></a>React router</h2>
 <ul>
-<li>Do not use this event to fetch data.</li>
-<li>This event has been deprecated.</li>
-<li>More critically, React does not <code>await</code> for <code>componentWillMount</code>, and <code>async</code> function calls put in this event to fetch data will not return. So data won&apos;t be available in <code>render</code> method.</li>
+<li>React router is a collection of navigational components that compose declaratively with the application.</li>
+<li>It turns React projects into single-page applications.</li>
+<li>It provides specialized components to:<ul>
+<li>Manage the creation of links</li>
+<li>Manage the app&apos;s URL</li>
+<li>Provide transitions between different URL locations</li>
 </ul>
-<h2 id="lifecycle-event-sequence"><a name="lifecycle-event-sequence" class="plugin-anchor" href="#lifecycle-event-sequence"><i class="fa fa-link" aria-hidden="true"></i></a>Lifecycle event sequence</h2>
-<h3 id="add-component-to-the-dom"><a name="add-component-to-the-dom" class="plugin-anchor" href="#add-component-to-the-dom"><i class="fa fa-link" aria-hidden="true"></i></a>Add component to the DOM</h3>
-<ul>
-<li><code>constructor</code></li>
-<li><code>getDerivedStateFromProps</code></li>
-<li><code>render</code></li>
-<li><code>componentDidMount</code></li>
+</li>
 </ul>
-<h3 id="re-render-component-to-the-dom"><a name="re-render-component-to-the-dom" class="plugin-anchor" href="#re-render-component-to-the-dom"><i class="fa fa-link" aria-hidden="true"></i></a>Re-render component to the DOM</h3>
+<h2 id="install-react-router-dom"><a name="install-react-router-dom" class="plugin-anchor" href="#install-react-router-dom"><i class="fa fa-link" aria-hidden="true"></i></a>Install <code>react-router-dom</code></h2>
+<pre><code class="lang-sh">// npm
+npm install --save react-router-dom
+
+// yarn
+yarn add react-router-dom
+</code></pre>
+<h2 id="browserrouter-component"><a name="browserrouter-component" class="plugin-anchor" href="#browserrouter-component"><i class="fa fa-link" aria-hidden="true"></i></a><code>BrowserRouter</code> component</h2>
 <ul>
-<li><code>getDerivedStateFromProps</code></li>
-<li><code>shouldComponentUpdate</code></li>
-<li><code>render</code></li>
-<li><code>getSnapshotBeforeUpdate</code></li>
-<li><code>componentDidUpdate</code></li>
+<li>Listen to changes in the URL</li>
+<li>Ensure the correct screen shows up whenever the URL changes</li>
+<li><p>Update <code>index.js</code> and wrap <code>App</code> inside <code>BrowserRouter</code></p>
+<pre><code class="lang-js"><span class="hljs-comment">// index.js</span>
+ReactDOM.render(
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">BrowserRouter</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">App</span>/&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">BrowserRouter</span>&gt;</span></span>,
+  <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&apos;root&apos;</span>),
+);
+</code></pre>
+</li>
+<li><p><code>BrowserRouter</code> source code</p>
+<pre><code class="lang-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BrowserRouter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  <span class="hljs-keyword">static</span> propTypes = {
+    basename: PropTypes.string,
+    forceRefresh: PropTypes.bool,
+    getUserConfirmation: PropTypes.func,
+    keyLength: PropTypes.number,
+    children: PropTypes.node
+  }
+
+  history = createHistory(<span class="hljs-keyword">this</span>.props)
+
+  render() {
+    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Router</span> <span class="hljs-attr">history</span>=<span class="hljs-string">{this.history}</span> <span class="hljs-attr">children</span>=<span class="hljs-string">{this.props.children}</span> /&gt;</span>
+  }
+}
+</span></code></pre>
+</li>
 </ul>
-<h3 id="remove-component-from-the-dom-"><a name="remove-component-from-the-dom-" class="plugin-anchor" href="#remove-component-from-the-dom-"><i class="fa fa-link" aria-hidden="true"></i></a>Remove component from the DOM |</h3>
+<h2 id="link-component"><a name="link-component" class="plugin-anchor" href="#link-component"><i class="fa fa-link" aria-hidden="true"></i></a><code>Link</code> component</h2>
 <ul>
-<li><code>componentWillUnmount</code></li>
+<li>When user clicks a <code>Link</code>, it tasks to the <code>BrowserRouter</code> about the URL update</li>
+<li>Replace <code>a</code> element with <code>Link</code> component:</li>
+</ul>
+<pre><code class="lang-js">  // simple link
+  &lt;Link to=&apos;/create&apos;&gt;Add Contact&lt;/Link&gt;
+
+  // complicated link
+  &lt;Link to={{
+    pathname: &apos;/courses&apos;,
+    search: &apos;?sort=name&apos;,
+    hash: &apos;#the-hash&apos;,
+    state: { fromDashboard: true }
+  }}&gt;
+    Course
+  &lt;/Link&gt;
+</code></pre>
+<h2 id="route-component"><a name="route-component" class="plugin-anchor" href="#route-component"><i class="fa fa-link" aria-hidden="true"></i></a><code>Route</code> component</h2>
+<ul>
+<li><p><code>Route</code> component decides which components to render based on the current URL path.</p>
+<pre><code class="lang-js"><span class="hljs-comment">// render function</span>
+&lt;Route exact path=<span class="hljs-string">&apos;/&apos;</span> render={() =&gt; (
+  &lt;content-to-render-under-this-path&gt;
+)} /&gt;
+
+// render component
+&lt;Route path=&apos;/create&apos; component={CreateComponent}/&gt;
+</code></pre>
+</li>
+<li><p>Without <code>exact</code>, path <code>/</code> can match <code>/create</code> as well</p>
+</li>
+<li><p>Push new path to <code>history</code> in <code>render</code> function to trigger a redirect:</p>
+<pre><code class="lang-js">&lt;Route path=<span class="hljs-string">&apos;/create&apos;</span> render={({ history }) =&gt; (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">CreateContact</span>
+    <span class="hljs-attr">onCreateContact</span>=<span class="hljs-string">{(contact)</span> =&gt;</span> {
+      this.createContact(contact);
+      // redirect after calling the above function
+      history.push(&apos;/&apos;);
+    }}
+  /&gt;
+)}/&gt;
+</span></code></pre>
+</li>
+</ul>
+<h2 id="readings"><a name="readings" class="plugin-anchor" href="#readings"><i class="fa fa-link" aria-hidden="true"></i></a>Readings</h2>
+<ul>
+<li><a href="https://reacttraining.com/react-router/web/guides/philosophy" target="_blank">React router documentation</a></li>
+<li><a href="https://tylermcginnis.com/build-your-own-react-router-v4/" target="_blank">Build your own React Router v4</a></li>
+<li><a href="https://tylermcginnis.com/react-router-nested-routes/" target="_blank">Nested routes with React Router</a></li>
 </ul>
 
                                 
@@ -577,14 +587,10 @@
 
             
                 
-                <a href="01-03-state-management.html" class="navigation navigation-prev " aria-label="Previous page: State Management">
+                <a href="01-04-lifecycle-events.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Lifecycle Events">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="01-05-react-router.html" class="navigation navigation-next " aria-label="Next page: React Router">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -593,7 +599,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Lifecycle Events","level":"1.2.4","depth":2,"next":{"title":"React Router","level":"1.2.5","depth":2,"path":"notes/01-05-react-router.md","ref":"notes/01-05-react-router.md","articles":[]},"previous":{"title":"State Management","level":"1.2.3","depth":2,"path":"notes/01-03-state-management.md","ref":"notes/01-03-state-management.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-sharing","github","anchors","splitter","expandable-chapters"],"pluginsConfig":{"github":{"url":"https://github.com/tuliren/react-nd"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"notes/01-04-lifecycle-events.md","mtime":"2020-04-06T08:29:55.133Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-06T08:30:38.660Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"React Router","level":"1.2.5","depth":2,"next":{"title":"Project: MyReads","level":"1.2.6","depth":2,"ref":"","articles":[]},"previous":{"title":"Lifecycle Events","level":"1.2.4","depth":2,"path":"notes/01-04-lifecycle-events.md","ref":"notes/01-04-lifecycle-events.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-sharing","github","anchors","splitter","expandable-chapters"],"pluginsConfig":{"github":{"url":"https://github.com/tuliren/react-nd"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"notes/01-05-react-router.md","mtime":"2020-04-06T08:29:55.133Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-06T08:30:38.660Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
-const SHELVES = {
-  currentlyReading: 'Currently Reading',
-  wantToRead: 'Want to Read',
-  read: 'Read',
-};
+import { SHELVES } from './constants';
 
 class ListBooks extends Component {
   static propTypes = {
     books: PropTypes.array.isRequired,
+    updateBookShelf: PropTypes.func.isRequired,
   };
 
   render() {
@@ -28,8 +24,8 @@ class ListBooks extends Component {
                 <div className="bookshelf-books">
                   <ol className="books-grid">
                     {books.filter((book) => book.shelf === shelfKey).map((book) => (
-                      <li>
-                        <div className="book" key={`book-${book.id}`}>
+                      <li key={`book-${book.id}`}>
+                        <div className="book">
                           <div className="book-top">
                             <div className="book-cover" style={{
                               width: 128,
@@ -37,7 +33,11 @@ class ListBooks extends Component {
                               backgroundImage: `url("${book.imageLinks.thumbnail}")`,
                             }}/>
                             <div className="book-shelf-changer">
-                              <select>
+                              <select
+                                value={book.shelf}
+                                onChange={(e) =>
+                                  this.props.updateBookShelf(book, e.target.value)}
+                              >
                                 <option value="move" disabled>Move to...</option>
                                 {Object.entries(SHELVES).map(([key, name]) => (
                                   <option

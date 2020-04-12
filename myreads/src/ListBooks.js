@@ -8,6 +8,41 @@ class ListBooks extends Component {
     updateBookShelf: PropTypes.func.isRequired,
   };
 
+  renderBook(book) {
+    return (
+      <li key={`book-${book.id}`}>
+        <div className="book">
+          <div className="book-top">
+            <div className="book-cover" style={{
+              width: 128,
+              height: 188,
+              backgroundImage: `url("${book.imageLinks.thumbnail}")`,
+            }}/>
+
+            <div className="book-shelf-changer">
+              <select
+                value={book.shelf}
+                onChange={(e) => this.props.updateBookShelf(book, e.target.value)}
+              >
+                <option value="move" disabled>
+                  Move to...
+                </option>
+                {Object.entries(SHELVES).map(([key, name]) => (
+                  <option value={key} key={`book-${book.id}-shelf-${key}`}>
+                    {name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div className="book-title">{book.title}</div>
+          <div className="book-authors">{book.authors.join(', ')}</div>
+        </div>
+      </li>
+    );
+  }
+
   render() {
     const { books } = this.props;
 
@@ -23,38 +58,10 @@ class ListBooks extends Component {
                 <h2 className="bookshelf-title">{shelfName}</h2>
                 <div className="bookshelf-books">
                   <ol className="books-grid">
-                    {books.filter((book) => book.shelf === shelfKey).map((book) => (
-                      <li key={`book-${book.id}`}>
-                        <div className="book">
-                          <div className="book-top">
-                            <div className="book-cover" style={{
-                              width: 128,
-                              height: 188,
-                              backgroundImage: `url("${book.imageLinks.thumbnail}")`,
-                            }}/>
-                            <div className="book-shelf-changer">
-                              <select
-                                value={book.shelf}
-                                onChange={(e) =>
-                                  this.props.updateBookShelf(book, e.target.value)}
-                              >
-                                <option value="move" disabled>Move to...</option>
-                                {Object.entries(SHELVES).map(([key, name]) => (
-                                  <option
-                                    value={key}
-                                    key={`book-${book.id}-shelf-${key}`}
-                                  >
-                                    {name}
-                                  </option>
-                                ))}
-                              </select>
-                            </div>
-                          </div>
-                          <div className="book-title">{book.title}</div>
-                          <div className="book-authors">{book.authors.join(', ')}</div>
-                        </div>
-                      </li>
-                    ))}
+                    {books
+                      .filter((book) => book.shelf === shelfKey)
+                      .map((book) => this.renderBook(book))
+                    }
                   </ol>
                 </div>
               </div>

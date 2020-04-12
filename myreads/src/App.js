@@ -29,13 +29,13 @@ class BooksApp extends React.Component {
       Object.entries(shelfBookIdMap).forEach(([shelfKey, bookIds]) => {
         bookIds.forEach((bookId) => {
           bookIdShelfMap[bookId] = shelfKey;
-        })
+        });
       });
       const books = this.state.books;
       for (const book of books) {
         book.shelf = bookIdShelfMap[book.id];
       }
-      this.setState({ books })
+      this.setState({ books });
     });
   }
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { SHELVES } from './constants';
 import { Link } from 'react-router-dom';
+import ListBooks from './ListBooks';
 
 class ListLibrary extends Component {
   static propTypes = {
@@ -9,41 +10,6 @@ class ListLibrary extends Component {
     bookIdShelfMap: PropTypes.objectOf(PropTypes.string).isRequired,
     updateBookShelf: PropTypes.func.isRequired,
   };
-
-  renderBook(book) {
-    return (
-      <li key={`book-${book.id}`}>
-        <div className="book">
-          <div className="book-top">
-            <div className="book-cover" style={{
-              width: 128,
-              height: 188,
-              backgroundImage: `url("${book.imageLinks.thumbnail}")`,
-            }}/>
-
-            <div className="book-shelf-changer">
-              <select
-                value={this.props.bookIdShelfMap[book.id]}
-                onChange={(e) => this.props.updateBookShelf(book, e.target.value)}
-              >
-                <option value="move" disabled>
-                  Move to...
-                </option>
-                {Object.entries(SHELVES).map(([key, name]) => (
-                  <option value={key} key={`book-${book.id}-shelf-${key}`}>
-                    {name}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-
-          <div className="book-title">{book.title}</div>
-          <div className="book-authors">{book.authors.join(', ')}</div>
-        </div>
-      </li>
-    );
-  }
 
   render() {
     if (this.props.books.length === 0) {
@@ -61,12 +27,11 @@ class ListLibrary extends Component {
               <div className="bookshelf" key={`shelf-${shelfKey}`}>
                 <h2 className="bookshelf-title">{shelfName}</h2>
                 <div className="bookshelf-books">
-                  <ol className="books-grid">
-                    {this.props.books
-                      .filter((book) => this.props.bookIdShelfMap[book.id] === shelfKey)
-                      .map((book) => this.renderBook(book))
-                    }
-                  </ol>
+                  <ListBooks
+                    books={this.props.books.filter((book) => this.props.bookIdShelfMap[book.id] === shelfKey)}
+                    bookIdShelfMap={this.props.bookIdShelfMap}
+                    updateBookShelf={this.props.updateBookShelf}
+                  />
                 </div>
               </div>
             ))}

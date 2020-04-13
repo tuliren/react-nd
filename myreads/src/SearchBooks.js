@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import ListLibrary from './ListLibrary';
 import * as BooksAPI from './BooksAPI';
+import ListBooks from './ListBooks';
 
 class SearchBooks extends Component {
   static propTypes = {
@@ -61,13 +61,11 @@ class SearchBooks extends Component {
           </div>
         </div>
         <div className="search-books-results">
-          <ol className="books-grid">
-            <ListLibrary
-              books={this.state.books}
-              bookIdShelfMap={this.props.bookIdShelfMap}
-              updateBookShelf={this.props.updateBookShelf}
-            />
-          </ol>
+          <ListBooks
+            books={this.state.books}
+            bookIdShelfMap={this.props.bookIdShelfMap}
+            updateBookShelf={this.props.updateBookShelf}
+          />
         </div>
       </div>
     );

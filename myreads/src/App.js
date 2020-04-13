@@ -29,6 +29,7 @@ class BooksApp extends React.Component {
 
   updateBookShelf(book, newShelf) {
     BooksAPI.update(book, newShelf).then((shelfBookIdMap) => {
+      // update books if necessary
       if (this.state.bookIdShelfMap[book.id] === undefined) {
         // this is a new book, add it to shelf
         const books = this.state.books;
@@ -40,6 +41,7 @@ class BooksApp extends React.Component {
         this.setState({ books });
       }
 
+      // update bookIdShelfMap
       const bookIdShelfMap = {};
       Object.entries(shelfBookIdMap).forEach(([shelfKey, bookIds]) => {
         bookIds.forEach((bookId) => {

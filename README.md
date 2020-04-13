@@ -19,12 +19,14 @@
 
 | Lesson | Title | Date |
 | ---- | ---- | ---- |
-| 01 | Why Redux? | |
-| 02 | Redux Core | |
-| 03 | React & Redux | |
-| 04 | Redux Store | |
-| 05 | Redux Middleware | |
-| 06 | Project: Readable | |
+| 01 | [Managing State](notes/02-01-managing-state.md) | |
+| 02 | UI + Redux | |
+| 03 | Redux Middleware | |
+| 04 | Redux with React | |
+| 05 | Asynchronous Redux | |
+| 06 | `react-redux` | |
+| 07 | Real World Redux | |
+| 08 | Project: Would You Rather | |
 
 ## React Native
 

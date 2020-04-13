@@ -2,7 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import './App.css';
 import * as BooksAPI from './BooksAPI';
-import ListLibrary from './ListLibrary';
+import ShowLibrary from './ShowLibrary';
 import SearchBooks from './SearchBooks';
 
 class BooksApp extends React.Component {
@@ -28,8 +28,6 @@ class BooksApp extends React.Component {
 
   updateBookShelf(book, newShelf) {
     BooksAPI.update(book, newShelf).then((shelfBookIdMap) => {
-      // update book shelf using the return value of BooksAPI#update,
-      // which is a map from shelf key to book ids
       const bookIdShelfMap = {};
       Object.entries(shelfBookIdMap).forEach(([shelfKey, bookIds]) => {
         bookIds.forEach((bookId) => {
@@ -44,7 +42,8 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
         <Route exact path='/' render={() => (
-          <ListLibrary
+          <ShowLibrary
+            pageTitle="My Library"
             books={this.state.books}
             bookIdShelfMap={this.state.bookIdShelfMap}
             updateBookShelf={this.updateBookShelf}
@@ -53,7 +52,7 @@ class BooksApp extends React.Component {
 
         <Route path='/search' render={() => (
           <SearchBooks
-            pageTitle="MyReads Search"
+            pageTitle="Add to Library"
             bookIdShelfMap={this.state.bookIdShelfMap}
             updateBookShelf={this.updateBookShelf}
           />

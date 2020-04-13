@@ -4,12 +4,17 @@ import { SHELVES } from './constants';
 import { Link } from 'react-router-dom';
 import ListBooks from './ListBooks';
 
-class ListLibrary extends Component {
+class ShowLibrary extends Component {
   static propTypes = {
+    pageTitle: PropTypes.string.isRequired,
     books: PropTypes.array.isRequired,
     bookIdShelfMap: PropTypes.objectOf(PropTypes.string).isRequired,
     updateBookShelf: PropTypes.func.isRequired,
   };
+
+  componentDidMount() {
+    document.title = this.props.pageTitle;
+  }
 
   render() {
     if (this.props.books.length === 0) {
@@ -40,7 +45,7 @@ class ListLibrary extends Component {
 
         <div className="open-search">
           <Link to='/search'>
-            <button>Search Books</button>
+            <button>Add to Library</button>
           </Link>
         </div>
       </div>
@@ -48,4 +53,4 @@ class ListLibrary extends Component {
   }
 }
 
-export default ListLibrary;
+export default ShowLibrary;

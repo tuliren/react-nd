@@ -3,3 +3,5 @@ export const SHELVES = {
   wantToRead: 'Want to Read',
   read: 'Read',
 };
+
+export const NOT_ON_SHELF = 'None';

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { SHELVES } from './constants';
+import { NOT_ON_SHELF, SHELVES } from './constants';
 import PropTypes from 'prop-types';
-
-const DEFAULT_SHELF = 'None';
 
 class ListBooks extends Component {
   static propTypes = {
@@ -24,7 +22,7 @@ class ListBooks extends Component {
 
             <div className="book-shelf-changer">
               <select
-                value={this.props.bookIdShelfMap[book.id] || DEFAULT_SHELF}
+                value={this.props.bookIdShelfMap[book.id] || NOT_ON_SHELF}
                 onChange={(e) => this.props.updateBookShelf(book, e.target.value)}
               >
                 <option value="move" disabled>Move to...</option>
@@ -33,7 +31,7 @@ class ListBooks extends Component {
                     {name}
                   </option>
                 ))}
-                <option value="None">{DEFAULT_SHELF}</option>
+                <option value="None">{NOT_ON_SHELF}</option>
               </select>
             </div>
           </div>

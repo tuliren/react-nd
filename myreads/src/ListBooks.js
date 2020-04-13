@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { SHELVES } from './constants';
+import { Link } from 'react-router-dom';
 
 class ListBooks extends Component {
   static propTypes = {
     books: PropTypes.array.isRequired,
+    bookIdShelfMap: PropTypes.objectOf(PropTypes.string).isRequired,
     updateBookShelf: PropTypes.func.isRequired,
   };
 
@@ -21,7 +23,7 @@ class ListBooks extends Component {
 
             <div className="book-shelf-changer">
               <select
-                value={book.shelf}
+                value={this.props.bookIdShelfMap[book.id]}
                 onChange={(e) => this.props.updateBookShelf(book, e.target.value)}
               >
                 <option value="move" disabled>
@@ -44,7 +46,9 @@ class ListBooks extends Component {
   }
 
   render() {
-    const { books } = this.props;
+    if (this.props.books.length === 0) {
+      return (<div/>);
+    }
 
     return (
       <div className="list-books">
@@ -58,8 +62,8 @@ class ListBooks extends Component {
                 <h2 className="bookshelf-title">{shelfName}</h2>
                 <div className="bookshelf-books">
                   <ol className="books-grid">
-                    {books
-                      .filter((book) => book.shelf === shelfKey)
+                    {this.props.books
+                      .filter((book) => this.props.bookIdShelfMap[book.id] === shelfKey)
                       .map((book) => this.renderBook(book))
                     }
                   </ol>
@@ -70,7 +74,9 @@ class ListBooks extends Component {
         </div>
 
         <div className="open-search">
-          <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button>
+          <Link to='/search'>
+            <button>Search Books</button>
+          </Link>
         </div>
       </div>
     );

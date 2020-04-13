@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 import './App.css';
 import * as BooksAPI from './BooksAPI';
 import ListBooks from './ListBooks';
@@ -7,6 +8,7 @@ import SearchBooks from './SearchBooks';
 class BooksApp extends React.Component {
   state = {
     books: [],
+    bookIdShelfMap: {},
   };
 
   constructor(props) {
@@ -16,7 +18,11 @@ class BooksApp extends React.Component {
 
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
-      this.setState({ books });
+      const bookIdShelfMap = {};
+      books.forEach((book) => {
+        bookIdShelfMap[book.id] = book.shelf;
+      });
+      this.setState({ books, bookIdShelfMap });
     });
   }
 
@@ -30,22 +36,28 @@ class BooksApp extends React.Component {
           bookIdShelfMap[bookId] = shelfKey;
         });
       });
-      const books = this.state.books;
-      for (const book of books) {
-        book.shelf = bookIdShelfMap[book.id];
-      }
-      this.setState({ books });
+      this.setState({ bookIdShelfMap });
     });
   }
 
   render() {
     return (
       <div className="app">
-        {this.state.showSearchPage ? (
-          <SearchBooks/>
-        ) : (
-          <ListBooks books={this.state.books} updateBookShelf={this.updateBookShelf}/>
-        )}
+        <Route exact path='/' render={() => (
+          <ListBooks
+            books={this.state.books}
+            bookIdShelfMap={this.state.bookIdShelfMap}
+            updateBookShelf={this.updateBookShelf}
+          />
+        )}/>
+
+        <Route path='/search' render={() => (
+          <SearchBooks
+            pageTitle="MyReads Search"
+            bookIdShelfMap={this.state.bookIdShelfMap}
+            updateBookShelf={this.updateBookShelf}
+          />
+        )}/>
       </div>
     );
   }

@@ -33,7 +33,8 @@ class ShowLibrary extends Component {
                 <h2 className="bookshelf-title">{shelfName}</h2>
                 <div className="bookshelf-books">
                   <ListBooks
-                    books={this.props.books.filter((book) => this.props.bookIdShelfMap[book.id] === shelfKey)}
+                    books={this.props.books.filter((book) =>
+                      this.props.bookIdShelfMap[book.id] === shelfKey)}
                     bookIdShelfMap={this.props.bookIdShelfMap}
                     updateBookShelf={this.props.updateBookShelf}
                   />

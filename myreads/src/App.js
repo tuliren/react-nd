@@ -4,6 +4,7 @@ import './App.css';
 import * as BooksAPI from './BooksAPI';
 import ShowLibrary from './ShowLibrary';
 import SearchBooks from './SearchBooks';
+import { NOT_ON_SHELF } from './constants';
 
 class BooksApp extends React.Component {
   state = {
@@ -28,6 +29,17 @@ class BooksApp extends React.Component {
 
   updateBookShelf(book, newShelf) {
     BooksAPI.update(book, newShelf).then((shelfBookIdMap) => {
+      if (this.state.bookIdShelfMap[book.id] === undefined) {
+        // this is a new book, add it to shelf
+        const books = this.state.books;
+        books.push(book);
+        this.setState({ books });
+      } else if (newShelf === NOT_ON_SHELF) {
+        // this book is removed from shelf
+        const books = this.state.books.filter(b => b.id !== book.id);
+        this.setState({ books });
+      }
+
       const bookIdShelfMap = {};
       Object.entries(shelfBookIdMap).forEach(([shelfKey, bookIds]) => {
         bookIds.forEach((bookId) => {

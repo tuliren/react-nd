@@ -2,7 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import './App.css';
 import * as BooksAPI from './BooksAPI';
-import ListBooks from './ListBooks';
+import ListLibrary from './ListLibrary';
 import SearchBooks from './SearchBooks';
 
 class BooksApp extends React.Component {
@@ -44,7 +44,7 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
         <Route exact path='/' render={() => (
-          <ListBooks
+          <ListLibrary
             books={this.state.books}
             bookIdShelfMap={this.state.bookIdShelfMap}
             updateBookShelf={this.updateBookShelf}

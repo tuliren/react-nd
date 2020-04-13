@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { SHELVES } from './constants';
 import { Link } from 'react-router-dom';
 
-class ListBooks extends Component {
+class ListLibrary extends Component {
   static propTypes = {
     books: PropTypes.array.isRequired,
     bookIdShelfMap: PropTypes.objectOf(PropTypes.string).isRequired,
@@ -83,4 +83,4 @@ class ListBooks extends Component {
   }
 }
 
-export default ListBooks;
+export default ListLibrary;

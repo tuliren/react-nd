@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import ListBooks from './ListBooks';
+import ListLibrary from './ListLibrary';
 import * as BooksAPI from './BooksAPI';
 
 class SearchBooks extends Component {
@@ -62,7 +62,7 @@ class SearchBooks extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            <ListBooks
+            <ListLibrary
               books={this.state.books}
               bookIdShelfMap={this.props.bookIdShelfMap}
               updateBookShelf={this.props.updateBookShelf}

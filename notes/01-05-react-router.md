@@ -86,8 +86,8 @@ yarn add react-router-dom
   ```js
   // render function
   <Route exact path='/' render={() => (
-    <content-to-render-under-this-path>
-  )} />
+    // content to render
+  )}/>
 
   // render component
   <Route path='/create' component={CreateComponent}/>

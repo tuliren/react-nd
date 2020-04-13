@@ -37,9 +37,11 @@ class SearchBooks extends Component {
 
   updateQuery(query) {
     this.setState({ query });
-    if (this.state.query.length > 0) {
-      BooksAPI.search(this.state.query).then((result) => {
-        if (!result.error) {
+    if (query && query.length > 0) {
+      BooksAPI.search(query.trim()).then((result) => {
+        if (result.error) {
+          this.setState({ books: [] });
+        } else {
           this.setState({ books: result });
         }
       });

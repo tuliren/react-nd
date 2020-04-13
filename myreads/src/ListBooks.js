@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { SHELVES } from './constants';
 import PropTypes from 'prop-types';
 
+const DEFAULT_SHELF = 'None';
+
 class ListBooks extends Component {
   static propTypes = {
     books: PropTypes.array.isRequired,
@@ -17,22 +19,21 @@ class ListBooks extends Component {
             <div className="book-cover" style={{
               width: 128,
               height: 188,
-              backgroundImage: `url("${book.imageLinks.thumbnail}")`,
+              backgroundImage: `url("${book.imageLinks && book.imageLinks.thumbnail}")`,
             }}/>
 
             <div className="book-shelf-changer">
               <select
-                value={this.props.bookIdShelfMap[book.id]}
+                value={this.props.bookIdShelfMap[book.id] || DEFAULT_SHELF}
                 onChange={(e) => this.props.updateBookShelf(book, e.target.value)}
               >
-                <option value="move" disabled>
-                  Move to...
-                </option>
+                <option value="move" disabled>Move to...</option>
                 {Object.entries(SHELVES).map(([key, name]) => (
                   <option value={key} key={`book-${book.id}-shelf-${key}`}>
                     {name}
                   </option>
                 ))}
+                <option value="None">{DEFAULT_SHELF}</option>
               </select>
             </div>
           </div>

@@ -13,7 +13,7 @@
 | 03 | [State Management](notes/01-03-state-management.md) | 2020-04-05 |
 | 04 | [Lifecycle Events](notes/01-04-lifecycle-events.md) | 2020-04-05 |
 | 05 | [React Router](notes/01-05-react-router.md) | 2020-04-05 |
-| 06 | Project: MyReads | |
+| 06 | [Project: MyReads](myreads/) | 2020-04-12 |
 
 ## React & Redux
 

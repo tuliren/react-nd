@@ -1,36 +1,39 @@
 # MyReads Project
 
+This is a bookshelf app that allows you to select and categorize books you have read, are currently reading, or want to read.
+
 ## How to Start
 
-* install all project dependencies with `yarn install`
-* start the development server with `yarn start`
+This project supports both `yarn` (recommended) and `npm`.
 
-## Project Structure
+```sh
+// yarn
+yarn install
+yarn start
 
-```bash
-├── CONTRIBUTING.md
-├── README.md - This file.
-├── SEARCH_TERMS.md # The whitelisted short collection of available search terms for you to use with your app.
-├── package.json # npm package manager file. It's unlikely that you'll need to modify this.
-├── public
-│   ├── favicon.ico # React Icon, You may change if you wish.
-│   └── index.html # DO NOT MODIFY
-└── src
-    ├── App.css # Styles for your app. Feel free to customize this as you desire.
-    ├── App.js # This is the root of your app. Contains static HTML right now.
-    ├── App.test.js # Used for testing. Provided with Create React App. Testing is encouraged, but not required.
-    ├── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
-    ├── icons # Helpful images for your app. Use at your discretion.
-    │   ├── add.svg
-    │   ├── arrow-back.svg
-    │   └── arrow-drop-down.svg
-    ├── index.css # Global styles. You probably won't need to change anything here.
-    └── index.js # You should not need to modify this file. It is used for DOM rendering only.
+// npm
+npm install
+npm start
 ```
 
-## Backend Server
+## App Functionality
 
-To simplify your development process, we've provided a backend server for you to develop against. The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods you will need to perform necessary operations on the backend:
+### Book Management
+
+In this application, the main page (`/`) displays a list of "shelves" (i.e. categories), each of which contains a number of books. The three shelves are:
+- Currently Reading
+- Want to Read
+- Read
+
+Each book has a control that lets you select the shelf for that book. When you select a different shelf, the book moves there.
+
+### Book Search
+
+There is also a search page (`/search`) that allows you to find books to add to your library.
+
+## Backend API
+
+[`BooksAPI.js`](src/BooksAPI.js) contains the methods necessary for communicating with the backend:
 
 * [`getAll`](#getall)
 * [`update`](#update)
@@ -71,7 +74,8 @@ search(query)
 * Returns a Promise which resolves to a JSON object containing a collection of a maximum of 20 book objects.
 * These books do not know which shelf they are on. They are raw results only. You'll need to make sure that books have the correct state while on the search page.
 
-## Important
+## Notice
+
 The backend API uses a fixed set of cached search results and is limited to a particular set of search terms, which can be found in [SEARCH_TERMS.md](SEARCH_TERMS.md). That list of terms are the _only_ terms that will work with the backend, so don't be surprised if your searches for Basket Weaving or Bubble Wrap don't come back with any results.
 
 ## Create React App

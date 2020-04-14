@@ -1,6 +1,6 @@
 # MyReads Project
 
-This is a bookshelf app that allows you to select and categorize books you have read, are currently reading, or want to read.
+This is a bookshelf app that allows you to select and categorize books you have read, are currently reading, or want to read. It is developed from [reactnd-project-myreads-starter](https://github.com/udacity/reactnd-project-myreads-starter).
 
 ## How to Start
 

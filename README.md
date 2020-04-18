@@ -15,18 +15,23 @@
 | 05 | [React Router](notes/01-05-react-router.md) | 2020-04-05 |
 | 06 | [Project: MyReads](myreads/) | 2020-04-12 |
 
+- Sample project [contacts](contacts)
+- Sample project server [contacts-serve](contacts-serve)
+
 ## React & Redux
 
 | Lesson | Title | Date |
 | ---- | ---- | ---- |
-| 01 | [Managing State](notes/02-01-managing-state.md) | |
-| 02 | UI + Redux | |
+| 01 | [Managing State](notes/02-01-managing-state.md) | 2020-04-17 |
+| 02 | [UI + Redux](notes/02-02-ui-redux.md) | 2020-04-17 |
 | 03 | Redux Middleware | |
 | 04 | Redux with React | |
 | 05 | Asynchronous Redux | |
 | 06 | `react-redux` | |
 | 07 | Real World Redux | |
 | 08 | Project: Would You Rather | |
+
+- Sample project [todos-goals](todos-goals)
 
 ## React Native
 

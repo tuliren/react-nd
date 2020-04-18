@@ -24,8 +24,8 @@
 | ---- | ---- | ---- |
 | 01 | [Managing State](notes/02-01-managing-state.md) | 2020-04-17 |
 | 02 | [UI + Redux](notes/02-02-ui-redux.md) | 2020-04-17 |
-| 03 | Redux Middleware | |
-| 04 | Redux with React | |
+| 03 | [Redux Middleware](notes/02-03-redux-middleware.md) | 2020-04-18 |
+| 04 | [Redux with React](notes/02-04-redux-with-react.md) | 2020-04-18 |
 | 05 | Asynchronous Redux | |
 | 06 | `react-redux` | |
 | 07 | Real World Redux | |

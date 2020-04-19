@@ -22,6 +22,7 @@ const store = Redux.createStore(
 ```
 
 - `middlewareFunction` is run between `store.dispatch()` and the reducer.
+- Middleware executes in the order it is listed in the `applyMiddleware()` function.
 
 ## Readings
 - [Middleware Docs](https://redux.js.org/advanced/middleware)

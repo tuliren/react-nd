@@ -74,4 +74,4 @@ class App extends React.Component {
 
 ## Readings
 - [Component State vs Redux Store](https://medium.com/netscape/component-state-vs-redux-store-1eb0c929277)
-- [React + Redux Architecture : Separation of Concerns]()
+- [React + Redux Architecture : Separation of Concerns](https://medium.com/@abhinav_jain123/react-redux-architecture-part-1-separation-of-concerns-812da3b08b46)

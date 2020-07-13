@@ -57,7 +57,7 @@ render(<App />, document.getElementById('root'));
 const Context = React.createContext();
 ```
 
-## `Context.Provider`
+### `Context.Provider`
 - The Provider component is used in the upper level of the component tree, the component from which the data to be passed is held.
 
 ```js
@@ -74,7 +74,7 @@ class App extends React.Component {
 }
 ```
 
-## `Context.Consumer`
+### `Context.Consumer`
 - `Consumer` is passed a function. This function accepts a value and returns the view.
 
 ```js
@@ -116,7 +116,7 @@ class ConnectedApp extends React.Component {
 }
 ```
 
-## `connect` function
+### `connect` function
 - `Context.Consumer` does two things:
   - Render a component
   - Pass that component any data it needs from the store
@@ -129,6 +129,33 @@ const ConnectedApp = connect((store) => ({
 ```
 
 ## `react-redux` bindings
+
+### `Provider`
+- `Provider` makes it possible for Redux to pass data from the store to any React components that need it. It uses React’s context feature.
+
+```js
+<ReactRedux.Provider store={store}>
+<ConnectedApp />
+</ReactRedux.Provider>
+```
+  
+### `connect()`
+- `connect` connects a React component to the Redux store.
+- It takes in two arguments and returns a function.
+- `mapStateToProps()` function specifies which state from the store to pass to the React component
+- `mapDispatchToProps()` function binds dispatch to action creators before they ever hit the component.
+
+```js
+const buildConnectedComponent = connect(mapStateToProps, mapDispatchToProps);
+const ConnectedComponent = buildConnectedComponent(MyComponent);
+  
+// combine into one statement
+const ConnectedComponent = connect(mapStateToProps, mapDispatchToProps)(MyComponent);
+```
+  
+- `ConnectedComponent` renders `MyComponent`, passing it the `props` as defined by `mapStateToProps` and `mapDispatchToPros`.
+
+## Folder structure
 
 
 ## Readings

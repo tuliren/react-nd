@@ -13,10 +13,10 @@
 | 03 | [State Management](notes/01-03-state-management.md) | 2020-04-05 |
 | 04 | [Lifecycle Events](notes/01-04-lifecycle-events.md) | 2020-04-05 |
 | 05 | [React Router](notes/01-05-react-router.md) | 2020-04-05 |
-| 06 | [Project: MyReads](myreads/) | 2020-04-12 |
+| 06 | [Project: MyReads](projects/myreads) | 2020-04-12 |
 
-- Sample project [contacts](contacts)
-- Sample project server [contacts-serve](contacts-serve)
+- Sample project [contacts](projects/contacts)
+- Sample project server [contacts-serve](projects/contacts-server)
 
 ## React & Redux
 
@@ -31,7 +31,8 @@
 | 07 | Real World Redux | |
 | 08 | Project: Would You Rather | |
 
-- Sample project [todos-goals](todos-goals)
+- Sample project [todos-goals](projects/todos-goals)
+- Sample project [todos-goals-app](projects/todos-goals-app)
 
 ## React Native
 

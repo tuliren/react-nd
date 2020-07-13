@@ -156,7 +156,30 @@ const ConnectedComponent = connect(mapStateToProps, mapDispatchToProps)(MyCompon
 - `ConnectedComponent` renders `MyComponent`, passing it the `props` as defined by `mapStateToProps` and `mapDispatchToPros`.
 
 ## Folder structure
+- Rails-style organization.
+  - Assets are grouped by "type" or "capability".
+  - Any action will be found in the Actions folder, any reducer will be found in Reducers, and so on.
 
+    ```
+    Frontend
+      - Components
+        - component1.js
+        - component2.js
+        - component3.js
+      - Actions
+        - action1.js
+        - action2.js
+      - Reducers
+        - reducer1.js
+      - Util
+      - Store
+    ```
+- Organization by feature
+  - Assets related to a navigation component are all together in a single, modular folder.
+  - If the app contains several hundred components, it can become difficult to navigate through.
+
+- Duck style
+  - Redux and state management files are completely separated from files that render UI.
 
 ## Readings
 - [Presentational and Container Components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)

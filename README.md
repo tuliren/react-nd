@@ -27,7 +27,7 @@
 | 03 | [Redux Middleware](notes/02-03-redux-middleware.md) | 2020-04-18 |
 | 04 | [Redux with React](notes/02-04-redux-with-react.md) | 2020-04-18 |
 | 05 | [Asynchronous Redux](notes/02-05-asynchronous-redux.md) | 2020-04-18 |
-| 06 | [`react-redux`](notes/02-06-react-redux.md) | |
+| 06 | [`react-redux`](notes/02-06-react-redux.md) | 2020-07-12 |
 | 07 | Real World Redux | |
 | 08 | Project: Would You Rather | |
 

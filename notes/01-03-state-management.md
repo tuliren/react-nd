@@ -80,7 +80,7 @@ this.state = {
 
 ## Update `state`
 - Use `setState` to update `state`.
-- Re;act will know the change and call `render` to re-render the component.
+- React will know the change and call `render` to re-render the component.
 - Two ways to use this function.
   - Pass in an object with the new value for the property to be updated. This object will be merged to the `state`.
   - Pass in a function and update the property based on previous `state` and `props`. The return value of this function will be merged to the `state`.

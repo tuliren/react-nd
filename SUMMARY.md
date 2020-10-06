@@ -7,12 +7,13 @@
   - Project: MyReads
 
 - React & Redux
-  - Why Redux?
-  - Redux Core
-  - React & Redux
-  - Redux Store
-  - Redux Middleware
-  - Project: Readable
+  - [Managing State](notes/02-01-managing-state.md)
+  - [UI + Redux](notes/02-02-ui-redux.md)
+  - [Redux Middleware](notes/02-03-redux-middleware.md)
+  - [Redux with React](notes/02-04-redux-with-react.md)
+  - [Asynchronous Redux](notes/02-05-asynchronous-redux.md)
+  - [`react-redux`](notes/02-06-react-redux.md)
+  - [Real World Redux](notes/02-07-real-world-redux.md)
 
 - React Native
   - Up and Running with React Native

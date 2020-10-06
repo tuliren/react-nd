@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>State Management · GitBook</title>
+        <title>UI + Redux · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -69,10 +69,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="01-04-lifecycle-events.html" />
+    <link rel="next" href="02-03-redux-middleware.html" />
     
     
-    <link rel="prev" href="01-02-render-ui-with-react.html" />
+    <link rel="prev" href="02-01-managing-state.html" />
     
 
     </head>
@@ -154,7 +154,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.3" data-path="01-03-state-management.html">
+        <li class="chapter " data-level="1.2.3" data-path="01-03-state-management.html">
             
                 <a href="01-03-state-management.html">
             
@@ -238,7 +238,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="02-02-ui-redux.html">
+        <li class="chapter active" data-level="1.3.2" data-path="02-02-ui-redux.html">
             
                 <a href="02-02-ui-redux.html">
             
@@ -448,7 +448,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >State Management</a>
+        <a href=".." >UI + Redux</a>
     </h1>
 </div>
 
@@ -463,164 +463,21 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="state-management"><a name="state-management" class="plugin-anchor" href="#state-management"><i class="fa fa-link" aria-hidden="true"></i></a>State Management</h1>
-<h2 id="introduction"><a name="introduction" class="plugin-anchor" href="#introduction"><i class="fa fa-link" aria-hidden="true"></i></a>Introduction</h2>
+                                <h1 id="ui--redux"><a name="ui--redux" class="plugin-anchor" href="#ui--redux"><i class="fa fa-link" aria-hidden="true"></i></a>UI + Redux</h1>
+<h2 id="examples"><a name="examples" class="plugin-anchor" href="#examples"><i class="fa fa-link" aria-hidden="true"></i></a>Examples</h2>
 <ul>
-<li>Props: pass data into components</li>
-<li>Functional components: an alternative, and more intuitive approach to creating components</li>
-<li>Controlled components: hook up the forms in application to state</li>
-</ul>
-<h2 id="props"><a name="props" class="plugin-anchor" href="#props"><i class="fa fa-link" aria-hidden="true"></i></a><code>props</code></h2>
-<ul>
-<li>A prop is any input that is passed to a React component.</li>
-<li>Just like an HTML attribute, a prop name and value are added to the Component.</li>
-<li>Passed in data is accessible through <code>this.props.&lt;variable&gt;</code></li>
-</ul>
-<pre><code class="lang-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
-  render() {
-    <span class="hljs-keyword">return</span> (
-      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Username: {this.props.username}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>
-    );
-  }
-}
-
-&lt;User username=<span class="hljs-string">&apos;Tyler&apos;</span>/&gt;
-</code></pre>
-<h2 id="functional-components"><a name="functional-components" class="plugin-anchor" href="#functional-components"><i class="fa fa-link" aria-hidden="true"></i></a>Functional components</h2>
-<ul>
-<li>If no internal state is needed, a component can be declared as a Stateless Functional Component.</li>
-<li>It is equivalent to a normal component with just the <code>render</code> method.</li>
-<li>The <code>props</code> are passed into a functional component as its parameter.</li>
-</ul>
-<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">User</span>(<span class="hljs-params">props</span>) </span>{
-  <span class="hljs-keyword">return</span> (
-    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Username: {props.username}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>
-  );
-}
-</code></pre>
-<h2 id="state"><a name="state" class="plugin-anchor" href="#state"><i class="fa fa-link" aria-hidden="true"></i></a><code>state</code></h2>
-<ul>
-<li><code>props</code> represents <em>immutable</em> data.</li>
-<li><code>state</code> represents <em>mutable</em> data.</li>
-<li><code>state</code> is managed internally by the component.</li>
-</ul>
-<pre><code class="lang-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
-  state = {
-    username: <span class="hljs-string">&apos;Tyler&apos;</span>,
-  };
-  render() {
-    <span class="hljs-keyword">return</span> (
-      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Username: ${this.state.username}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>
-    );
-  }
-}
-</code></pre>
-<ul>
-<li>The UI is simply a function of the application state.</li>
-<li>Application concern:<ul>
-<li>Which state is in the application?</li>
-<li>How does the UI change based off of the state?</li>
-</ul>
-</li>
-<li><code>state</code> is a class field, and lives outside the <code>constructor()</code> method.<ul>
-<li>It is not supported by JavaScript yet, but it is transpiled by Babel.</li>
+<li><a href="../todos-goals/index-native.html">Redux store from scratch</a></li>
+<li><a href="../todos-goals/index-redux.html">Redux store with library</a><ul>
+<li><code>createStore</code> is replaced with <code>Redux#createStore</code>.</li>
+<li>Root reducer is replaced with <code>Redux#combineReducers</code>.</li>
 </ul>
 </li>
 </ul>
-<h2 id="props-in-initial-state-anti-pattern"><a name="props-in-initial-state-anti-pattern" class="plugin-anchor" href="#props-in-initial-state-anti-pattern"><i class="fa fa-link" aria-hidden="true"></i></a>Props in initial state anti-pattern</h2>
+<h2 id="readings"><a name="readings" class="plugin-anchor" href="#readings"><i class="fa fa-link" aria-hidden="true"></i></a>Readings</h2>
 <ul>
-<li>Do not initialize <code>state</code> with <code>props</code>.</li>
+<li><a href="https://blog.pusher.com/the-what-and-why-of-redux/" target="_blank">The what and why of Redux</a></li>
+<li><a href="https://css-tricks.com/learning-react-redux/" target="_blank">Leveling Up with React: Redux</a></li>
 </ul>
-<pre><code class="lang-js"><span class="hljs-comment">// anti-pattern</span>
-<span class="hljs-keyword">this</span>.state = {
-  user: props.user,
-};
-</code></pre>
-<ul>
-<li>If <code>props</code> is updated, <code>state</code> won&apos;t change unless the component is refreshed.</li>
-<li>Data is duplicated.</li>
-</ul>
-<h2 id="reconciliation"><a name="reconciliation" class="plugin-anchor" href="#reconciliation"><i class="fa fa-link" aria-hidden="true"></i></a>Reconciliation</h2>
-<ul>
-<li>Any time <code>state</code> is changed, React will know and automatically update the page.</li>
-<li>Reconciliation is the process of determining what has changed in the previous and new outputs.</li>
-</ul>
-<h2 id="update-state"><a name="update-state" class="plugin-anchor" href="#update-state"><i class="fa fa-link" aria-hidden="true"></i></a>Update <code>state</code></h2>
-<ul>
-<li>Use <code>setState</code> to update <code>state</code>.</li>
-<li>React will know the change and call <code>render</code> to re-render the component.</li>
-<li>Two ways to use this function.<ul>
-<li>Pass in an object with the new value for the property to be updated. This object will be merged to the <code>state</code>.</li>
-<li>Pass in a function and update the property based on previous <code>state</code> and <code>props</code>. The return value of this function will be merged to the <code>state</code>.</li>
-</ul>
-</li>
-</ul>
-<pre><code class="lang-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Email</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
- state = {
-   count: <span class="hljs-number">1</span>,
- };
-};
-
-<span class="hljs-comment">// approach one</span>
-<span class="hljs-keyword">this</span>.setState({
-  count: <span class="hljs-number">2</span>,
-})
-
-<span class="hljs-comment">// approach two</span>
-<span class="hljs-keyword">this</span>.setState((prevState, props) =&gt; {
-  count: prevState.count + <span class="hljs-number">1</span>,
-});
-</code></pre>
-<h2 id="type-checking-with-proptypes"><a name="type-checking-with-proptypes" class="plugin-anchor" href="#type-checking-with-proptypes"><i class="fa fa-link" aria-hidden="true"></i></a>Type checking with <code>PropTypes</code></h2>
-<ul>
-<li><code>PropTypes</code> is a package that provides type definition for <code>props</code></li>
-<li>It warns about mismatched <code>prop</code> properties passed into a component</li>
-</ul>
-<pre><code class="lang-sh"><span class="hljs-comment"># npm</span>
-npm install --save prop-types
-
-<span class="hljs-comment"># yarn</span>
-yarn add prop-types
-</code></pre>
-<pre><code class="lang-js"><span class="hljs-keyword">import</span> PropTypes <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;prop-types&apos;</span>
-
-ListContacts.propTypes = {
-  contacts: PropTypes.array.isRequired,
-  onDeleteContact: PropTypes.func.isRequired,
-}
-</code></pre>
-<h2 id="controlled-components"><a name="controlled-components" class="plugin-anchor" href="#controlled-components"><i class="fa fa-link" aria-hidden="true"></i></a>Controlled components</h2>
-<ul>
-<li>Components that render a form, but the &quot;source of truth&quot; for that form state lives inside of the component state rather than inside of the DOM</li>
-<li>It controls what happens in that form based on user input</li>
-<li>Benefits of controlled components:<ul>
-<li>Instant input validation</li>
-<li>Conditionally disable/enable buttons</li>
-<li>Enforce input formats</li>
-</ul>
-</li>
-</ul>
-<pre><code class="lang-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NameForm</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
-  state = { email: <span class="hljs-string">&apos;&apos;</span> };
-
-  <span class="hljs-comment">// react is in control of the email property</span>
-  handleChange = (event) =&gt; {
-    <span class="hljs-keyword">this</span>.setState({ email: event.target.value });
-  };
-
-  render() {
-    <span class="hljs-keyword">return</span> (
-      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">form</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
-          <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
-          <span class="hljs-attr">value</span>=<span class="hljs-string">{this.state.email}</span>
-          <span class="hljs-attr">onChange</span>=<span class="hljs-string">{this.handleChange}</span>
-        /&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
-    );
-  }
-}
-</span></code></pre>
 
                                 
                                 </section>
@@ -648,12 +505,12 @@ ListContacts.propTypes = {
 
             
                 
-                <a href="01-02-render-ui-with-react.html" class="navigation navigation-prev " aria-label="Previous page: Render UI with React">
+                <a href="02-01-managing-state.html" class="navigation navigation-prev " aria-label="Previous page: Managing State">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="01-04-lifecycle-events.html" class="navigation navigation-next " aria-label="Next page: Lifecycle Events">
+                <a href="02-03-redux-middleware.html" class="navigation navigation-next " aria-label="Next page: Redux Middleware">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -664,7 +521,7 @@ ListContacts.propTypes = {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"State Management","level":"1.2.3","depth":2,"next":{"title":"Lifecycle Events","level":"1.2.4","depth":2,"path":"notes/01-04-lifecycle-events.md","ref":"notes/01-04-lifecycle-events.md","articles":[]},"previous":{"title":"Render UI with React","level":"1.2.2","depth":2,"path":"notes/01-02-render-ui-with-react.md","ref":"notes/01-02-render-ui-with-react.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-sharing","github","anchors","splitter","expandable-chapters"],"pluginsConfig":{"github":{"url":"https://github.com/tuliren/react-nd"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"notes/01-03-state-management.md","mtime":"2020-10-06T07:22:52.181Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-06T07:23:30.502Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"UI + Redux","level":"1.3.2","depth":2,"next":{"title":"Redux Middleware","level":"1.3.3","depth":2,"path":"notes/02-03-redux-middleware.md","ref":"notes/02-03-redux-middleware.md","articles":[]},"previous":{"title":"Managing State","level":"1.3.1","depth":2,"path":"notes/02-01-managing-state.md","ref":"notes/02-01-managing-state.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-sharing","github","anchors","splitter","expandable-chapters"],"pluginsConfig":{"github":{"url":"https://github.com/tuliren/react-nd"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"notes/02-02-ui-redux.md","mtime":"2020-10-06T07:22:52.181Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-06T07:23:30.502Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

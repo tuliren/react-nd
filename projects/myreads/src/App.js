@@ -1,10 +1,11 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import * as BooksAPI from './BooksAPI';
 import ShowLibrary from './ShowLibrary';
 import SearchBooks from './SearchBooks';
 import { NOT_ON_SHELF } from './constants';
+import NoMatch from './NoMatch';
 
 class BooksApp extends React.Component {
   state = {
@@ -55,22 +56,26 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-        <Route exact path='/' render={() => (
-          <ShowLibrary
-            pageTitle="My Library"
-            books={this.state.books}
-            bookIdShelfMap={this.state.bookIdShelfMap}
-            updateBookShelf={this.updateBookShelf}
-          />
-        )}/>
+        <Switch>
+          <Route exact path='/' render={() => (
+            <ShowLibrary
+              pageTitle="My Library"
+              books={this.state.books}
+              bookIdShelfMap={this.state.bookIdShelfMap}
+              updateBookShelf={this.updateBookShelf}
+            />
+          )}/>
 
-        <Route path='/search' render={() => (
-          <SearchBooks
-            pageTitle="Add to Library"
-            bookIdShelfMap={this.state.bookIdShelfMap}
-            updateBookShelf={this.updateBookShelf}
-          />
-        )}/>
+          <Route path='/search' render={() => (
+            <SearchBooks
+              pageTitle="Add to Library"
+              bookIdShelfMap={this.state.bookIdShelfMap}
+              updateBookShelf={this.updateBookShelf}
+            />
+          )}/>
+
+          <Route component={NoMatch}/>
+        </Switch>
       </div>
     );
   }

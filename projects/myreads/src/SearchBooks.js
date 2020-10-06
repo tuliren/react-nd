@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import debounce from 'lodash/debounce';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as BooksAPI from './BooksAPI';
@@ -28,23 +29,40 @@ class SearchBooks extends Component {
 
   constructor(props) {
     super(props);
-    this.updateQuery = this.updateQuery.bind(this);
+    this.onChangeQuery = this.onChangeQuery.bind(this);
+    this.queryBooks = debounce(this.queryBooks.bind(this), 300);
   }
 
   componentDidMount() {
     document.title = this.props.pageTitle;
   }
 
-  updateQuery(query) {
-    this.setState({ query });
-    if (query && query.length > 0) {
-      BooksAPI.search(query.trim()).then((result) => {
+  queryBooks(query) {
+    // when the debounce function is fired, query
+    // string may already have changed; do not trigger
+    // the search if that's the case
+    if (this.state.query === query) {
+      BooksAPI.search(query).then((result) => {
         if (result.error) {
           this.setState({ books: [] });
-        } else {
+        } else if (this.state.query === query) {
           this.setState({ books: result });
+        } else {
+          // when the results are received, query is outdated;
+          // do not update books array
         }
       });
+    }
+  }
+
+  onChangeQuery(event) {
+    this.setState({ query: event.target.value });
+
+    const queryString = event.target.value.trim();
+    if (queryString.length > 0) {
+      this.queryBooks(queryString);
+    } else {
+      this.setState({ books: [] });
     }
   }
 
@@ -61,7 +79,7 @@ class SearchBooks extends Component {
               placeholder="Search by title or author"
               value={this.state.query}
               autoFocus={true}
-              onChange={(event) => this.updateQuery(event.target.value)}
+              onChange={this.onChangeQuery}
             />
           </div>
         </div>

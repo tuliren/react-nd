@@ -18,7 +18,7 @@ class ListBooks extends Component {
               width: 128,
               height: 188,
               backgroundImage: `url("${book.imageLinks && book.imageLinks.thumbnail}")`,
-            }}/>
+            }}>{!book.imageLinks && 'No image available'}</div>
 
             <div className="book-shelf-changer">
               <select

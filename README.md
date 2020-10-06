@@ -13,18 +13,27 @@
 | 03 | [State Management](notes/01-03-state-management.md) | 2020-04-05 |
 | 04 | [Lifecycle Events](notes/01-04-lifecycle-events.md) | 2020-04-05 |
 | 05 | [React Router](notes/01-05-react-router.md) | 2020-04-05 |
-| 06 | [Project: MyReads](myreads/) | 2020-04-12 |
+| 06 | [Project: MyReads](projects/myreads) | 2020-04-12 |
+
+- Sample project [contacts](projects/contacts)
+- Sample project server [contacts-serve](projects/contacts-server)
 
 ## React & Redux
 
 | Lesson | Title | Date |
 | ---- | ---- | ---- |
-| 01 | Why Redux? | |
-| 02 | Redux Core | |
-| 03 | React & Redux | |
-| 04 | Redux Store | |
-| 05 | Redux Middleware | |
-| 06 | Project: Readable | |
+| 01 | [Managing State](notes/02-01-managing-state.md) | 2020-04-17 |
+| 02 | [UI + Redux](notes/02-02-ui-redux.md) | 2020-04-17 |
+| 03 | [Redux Middleware](notes/02-03-redux-middleware.md) | 2020-04-18 |
+| 04 | [Redux with React](notes/02-04-redux-with-react.md) | 2020-04-18 |
+| 05 | [Asynchronous Redux](notes/02-05-asynchronous-redux.md) | 2020-04-18 |
+| 06 | [`react-redux`](notes/02-06-react-redux.md) | 2020-07-12 |
+| 07 | [Real World Redux](notes/02-07-real-world-redux.md) | |
+| 08 | Project: Would You Rather | |
+
+- Sample project [todos-goals](projects/todos-goals)
+- Sample project [todos-goals-app](projects/todos-goals-app)
+- Sample project [chirper-app](projects/chirper-app)
 
 ## React Native
 

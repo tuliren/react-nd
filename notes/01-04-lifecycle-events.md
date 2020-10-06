@@ -73,5 +73,5 @@ class User extends Component {
 - `getSnapshotBeforeUpdate`
 - `componentDidUpdate`
 
-### Remove component from the DOM |
+### Remove component from the DOM
 - `componentWillUnmount`
